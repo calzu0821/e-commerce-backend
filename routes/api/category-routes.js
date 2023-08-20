@@ -21,7 +21,7 @@ router.get('/:id', async (req, res) => {
   // find one category by its `id` value
   // be sure to include its associated Products
   try {
-    const category =await Category.findByPk(req.params.id,{
+    const category = await Category.findByPk(req.params.id,{
       include: [{model: Product}],
     });
     if (!category) {
@@ -38,7 +38,7 @@ router.get('/:id', async (req, res) => {
 router.post('/', async (req, res) => {
   // create a new category
   try {
-    const newCategory= await Category.create(req.body);
+    const newCategory = await Category.create(req.body);
     res.status(201).json(newCategory);
   } catch (err) {
     console.log(err);
@@ -48,7 +48,7 @@ router.post('/', async (req, res) => {
 
 router.put('/:id', async (req, res) => {
   // update a category by its `id` value
-  const updateCategory= await Category.update(req.body,{
+  const updateCategory = await Category.update(req.body,{
       
     where: {
       id: req.params.id,
@@ -60,7 +60,7 @@ router.put('/:id', async (req, res) => {
 router.delete('/:id', async (req, res) => {
   // delete a category by its `id` value
   try {
-    const deletedCategory= await Category.destroy ({
+    const deletedCategory = await Category.destroy ({
       where: {
         id: req.params.id,
       }

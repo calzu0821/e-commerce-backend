@@ -30,11 +30,12 @@ router.get('/:id', async (req, res) => {
         through: ProductTag
       }],
     });
-    if (!tag) {
-      res.status(404).json({ message: 'Tag not found' });
-    } else {
-      res.status(200).json(tag);
-    }
+    res.status(200).json(tag);
+    // if (!tag) {
+    //   res.status(404).json({ message: 'Tag not found' });
+    // } else {
+    //   res.status(200).json(tag);
+    // }
   } catch (error) {
     console.log(error);
     res.status(500).json(error);
@@ -60,11 +61,12 @@ router.put('/:id', async (req, res) => {
         id: req.params.id
       }
     });
-    if (updatedTag[0] === 0) {
-      res.status(404).json({ message: 'Tag not found' });
-    } else {
-      res.status(200).json({ message: 'Tag updated successfully' });
-    }
+    res.status(200).json(updatedTag);
+    // if (updatedTag[0] === 0) {
+    //   res.status(404).json({ message: 'Tag not found' });
+    // } else {
+    //   res.status(200).json({ message: 'Tag updated successfully' });
+    // }
   } catch (error) {
     console.log(error);
     res.status(400).json(error);
@@ -79,14 +81,14 @@ router.delete('/:id', async (req, res) => {
         id: req.params.id
       }
     });
-    if (!deletedTag) {
-      res.status(404).json({ message: 'Tag not found' });
-    } else {
-      res.status(200).json({ message: 'Tag deleted successfully' });
-    }
+    // if (!deletedTag) {
+    //   res.status(404).json({ message: 'Tag not found' });
+    // } else {
+    //   res.status(200).json({ message: 'Tag deleted successfully' });
+    // }
+    res.json(deletedTag);
   } catch (error) {
-    console.log(error);
-    res.status(500).json(error);
+    res.json(error)
   }
 });
 
